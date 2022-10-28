@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        {% if super_user == 1: %}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle navbar-brand" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"  style="color: darksalmon;"><em>UtopikESSenses</em></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                    <li><a class="dropdown-item" href="/admin" style="color: darksalmon;">Inicio Admin</a></li>
+                    <li><a class="dropdown-item" href="/" style="color: darksalmon;">Inicio Usuario</a></li>
+                </ul>
+            </div>
+        {% else: %}
+            <a class="navbar-brand" href="/" style="color: darksalmon;"><em>UtopikESSenses</em></a>
+        {% endif %}
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+            <button class="btn btn-outline-darksalmon" style="color: darksalmon;" type="submit">Buscar</button>
+        </form>
+        <a href="/carrito" style="color: darksalmon;"><i class="bi bi-cart"></i></a>
+        {% if datos == 1: %}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: darksalmon;">
+                Welcome!
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                    <li><a class="dropdown-item" href="/perfil" style="color: darksalmon;">Perfil</a></li>
+                    <li><a class="dropdown-item" href="/miscompras" style="color: darksalmon;">Mis compras</a></li>
+                    <li><a class="dropdown-item" href="/logout" style="color: darksalmon;">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        {% else: %}
+            <a style="color: darksalmon;" href="/login">Ingresar   <i class="bi bi-person-circle"></i></a>
+        {% endif %}
+    </div>
+</nav>
+<div>
+    {% if not temas: %}
+        <div class="card bd-dark" style="color: darksalmon;">
+            <h3>No hay temas disponbibles</h3>
+        </div>
+    {% else: %}
+        {% for tema in temas: %}
+            <div class="card">
+                <img style="height: 18rem;" src="{{ url_for('download_file', name= tema.nombre_portada) }}" alt="{{ tema.nombre_portada }}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ tema.titulo }}</h5>
+                    <p class="card-text">{{ tema.descripcion }}</p>
+                    <a href="/foro/tema/{{ tema.id }}" class="btn btn-primary" style="background-color: darksalmon;border:0;">Ver más</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

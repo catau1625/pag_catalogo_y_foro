@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<!--BARRA DE NAVEGACIÓN-->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        {% if super_user == 1: %}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle navbar-brand" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"  style="color: darksalmon;"><em>UtopikESSenses</em></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                    <li><a class="dropdown-item" href="/admin" style="color: darksalmon;">Inicio Admin</a></li>
+                    <li><a class="dropdown-item" href="/" style="color: darksalmon;">Inicio Usuario</a></li>
+                </ul>
+            </div>
+        {% else: %}
+            <a class="navbar-brand" href="/" style="color: darksalmon;"><em>UtopikESSenses</em></a>
+        {% endif %}
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+            <button class="btn btn-outline-darksalmon" style="color: darksalmon;" type="submit">Buscar</button>
+        </form>
+        <a href="/carrito" style="color: darksalmon;">Carrito<i class="bi bi-cart"></i></a>
+        {% if datos == 1: %}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: darksalmon;">
+                Welcome!
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                    <li><a class="dropdown-item" href="/perfil" style="color: darksalmon;">Perfil</a></li>
+                    <li><a class="dropdown-item" href="/miscompras" style="color: darksalmon;">Mis compras</a></li>
+                    <li><a class="dropdown-item" href="/logout" style="color: darksalmon;">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        {% else: %}
+            <a style="color: darksalmon;" href="/login">Ingresar   <i class="bi bi-person-circle"></i></a>
+        {% endif %}
+    </div>
+</nav>
+
+<!--CONTENIDO PÁGINA-->
+<div class="row justify-content-between">
+
+    <!--PRIMER CARRUSEL: INSUMOS-->
+    <div id="catalogo-carousel" class="carousel slide border-bottom" data-bs-ride="carousel">
+        <div style="background-color: darksalmon;" class="carousel-inner">
+            <!--IMAGEN 1-->
+            <div class="carousel-item active" data-bs-interval="2000">
+                <a href="/insumos"><img style="height: 30em; width:40em;" class="img-fluid" src="static/img/rollones.jpeg" class="d-block w-100" alt="Roll on Ambar"></a>
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Insumos</h2>
+                    <p>Contenedores para mezclas esenciales: 10ml, 5ml, 3ml, 2ml y 1ml</p>
+                </div>
+            </div>
+            <!--IMAGEN 2-->
+            <div class="carousel-item" data-bs-interval="10000">
+                <a href="/insumos"><img style="height: 30em;width:40em;" class="img-fluid" src="static/img/pastilleros.webp" class="d-block w-100" alt="Pastillero"></a>
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Insumos</h2>
+                    <p>Pastilleros opacos para capsulas esenciales, modelos varios</p>
+                </div>
+            </div>
+            <!--IMAGEN 3-->
+            <div class="carousel-item" data-bs-interval="2000">
+                <a href="/insumos"><img style="height: 30em;width:40em;" class="img-fluid" src="static/img/capsulas.jpeg" class="d-block w-100" alt="Cápsulas"></a>
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Insumos</h2>
+                    <p>Cápsulas de gelatina vegetal para mezclas esenciales</p>
+                </div>
+            </div>
+            <!--IMAGEN 4-->
+            <div class="carousel-item" data-bs-interval="10000">
+                <a href="/insumos"><img style="height: 30em;width:40em;" class="img-fluid" src="static/img/aceites.jpeg" class="d-block w-100" alt="Aceites Esenciales"></a>
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Insumos</h2>
+                    <p>Aceites esenciales doTERRA: para usos tópico, aromático e interno</p>
+                </div>
+            </div>
+        </div>
+        <!--BOTONES LATERALES CARRUSEL INSUMOS-->
+        <button style="background-color: black;" class="carousel-control-prev" type="button" data-bs-target="#catalogo-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button style="background-color: black;" class="carousel-control-next" type="button" data-bs-target="#catalogo-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+    <br>
+
+    <!--SEGUNDO CARRUSEL: FORO-->
+    <div id="carousel-foro" class="carousel slide rounded" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel-foro" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carousel-foro" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+        <div style="background-color: darksalmon;" class="carousel-inner">
+            <!--IMAGEN 1-->
+            <div class="carousel-item active" data-bs-interval="10000">
+                <a href="/foro"><img style="height: 30em;width:40em;" class="img-fluid" src="static/img/personas1.jpg" class="d-block w-100" alt="Personas interactuando"></a>
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Foro Esencial</h2>
+                    <p>Encuentra las más variadas recetas y consejos sobre uso de aceites esenciales</p>
+                </div>
+            </div>
+            <!--IMAGEN 2-->
+            <div class="carousel-item" data-bs-interval="2000">
+                <a href="/foro"><img style="height: 30em;width:40em;" src="static/img/personas2.jpg" class="d-block w-100" alt="Personas interactuando"></a>
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Foro Esencial</h2>
+                    <p>Regístrate y participa, es gratis!</p>
+                </div>
+        </div>
+        <!--BOTONES LATERALES CARRUSEL FORO-->
+        <button style="background-color: black;" class="carousel-control-prev" type="button" data-bs-target="#carousel-foro" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button style="background-color: black;" class="carousel-control-next" type="button" data-bs-target="#carousel-foro" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+</div>
+
+{% endblock %}

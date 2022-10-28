@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        {% if super_user == 1: %}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle navbar-brand" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"  style="color: darksalmon;"><em>UtopikESSenses</em></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                    <li><a class="dropdown-item" href="/admin" style="color: darksalmon;">Inicio Admin</a></li>
+                    <li><a class="dropdown-item" href="/" style="color: darksalmon;">Inicio Usuario</a></li>
+                </ul>
+            </div>
+        {% else: %}
+            <a class="navbar-brand" href="/" style="color: darksalmon;"><em>UtopikESSenses</em></a>
+        {% endif %}
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+            <button class="btn btn-outline-darksalmon" style="color: darksalmon;" type="submit">Search</button>
+        </form>
+        <a href="/carrito" style="color: darksalmon;"><i class="bi bi-cart"></i></a>
+        {% if datos == 1: %}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: darksalmon;">
+                Welcome!
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                    <li><a class="dropdown-item" href="/perfil" style="color: darksalmon;">Perfil</a></li>
+                    <li><a class="dropdown-item" href="/miscompras" style="color: darksalmon;">Mis compras</a></li>
+                    <li><a class="dropdown-item" href="/logout" style="color: darksalmon;">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        {% else: %}
+            <a style="color: darksalmon;" href="/login">Ingresar<i class="bi bi-person-circle"></i></a>
+        {% endif %}
+    </div>
+</nav>
+<div>
+    <span></span>
+</div>
+<div class="d-flex justify-content-center">
+
+    <div class="bg-dark card border-5 border-dark" style="color: darksalmon;width: 35rem;">
+        <div class="card-header">
+            <h2>{{producto.nombre}}</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row"><br></div>
+                <div class="row border rounded"><p><em>{{ producto.descripcion }}</em></p></div>
+                <div class="row"><br></div>
+                <div class="row border rounded"><h4>$ {{ producto.precio }}</h4></div>
+            </div>
+            <div class="col">
+                <img class="img-fluid" src="{{ url_for('download_file', name= producto.nombre|lower  +'.png') }}" alt="{{ producto.nombre }}">
+            </div>
+            <div>
+                <span><br>
+                </span>
+            </div>
+        </div>
+
+    <div class="bg-dark" style="color: darksalmon;">
+        <form action="/producto/carrito/process/{{ producto.id }}" method="post">
+            <label class="border border-5 border-dark" for="cantidad">Cantidad:</label>
+            <input name="cantidad" class="border border-5 rounded border-dark" type="number">
+            <button class="btn border border-5 border-dark" style="background-color: darksalmon;" type="submit">Agregar al Carrito</button>
+        </form>
+    </div>
+        
+</div>
+
+</div>
+
+{% endblock %}

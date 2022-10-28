@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand" style="color: darksalmon;"><em>UtopikESSenses</em></a>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+            <button class="btn btn-outline-darksalmon" style="color: darksalmon;" type="submit">Buscar</button>
+        </form>
+        <a href="/carrito" style="color: darksalmon;"><i class="bi bi-cart"></i></a>
+        <a style="color: darksalmon;" href="/login"><i class="bi bi-person-circle"></i></a>
+    </div>
+</nav>
+<div>
+    <div class="registro">
+        <form action="/registro/process" method="post" class="p-1 col-6 mx-auto my-5 bg-dark text-light float-start">
+            <div class="titulo" style="color: darksalmon;"><h1>Registrarse</h1></div>
+            <div class="row-sm-10 mb-2">
+                <label for="nombre" style="color: darksalmon;">Nombre:</label>
+                <input name="nombre" type="text" class="form-control">
+            </div>
+            <div class="row-sm-10 mb-2">
+                <label for="apellido" style="color: darksalmon;">Apellido:</label>
+                <input name="apellido" type="text" class="form-control">
+            </div>
+            <div class="row-sm-10 mb-2">
+                <label for="nombre_usuario" style="color: darksalmon;">Nombre de Usuario:</label>
+                <input name="nombre_usuario" type="text" class="form-control">
+            </div>
+            <div class="row-sm-10 mb-2">
+                <label for="email" style="color: darksalmon;">Email:</label>
+                <input name="email" type="text" class="form-control">
+            </div>
+            <div class="row-sm-10 mb-2">
+                <label for="password" style="color: darksalmon;">Password:</label>
+                <input name="password" type="password" class="form-control">
+            </div>
+            <div class="row-sm-10 mb-2">
+                <label for="confirm_password" style="color: darksalmon;">Confirmar password:</label>
+                <input name="confirm_password" type="password" class="form-control">
+            </div>
+            <div>
+                <span></span>
+            </div>
+            <select class="border-2 bg-dark form-select" name="suscripcion"  style="color: darksalmon;" aria-label="Default select example">
+                <option selected>Suscripción</option>
+                {% for element in suscripciones[1:]:%}
+                    <option value="{{ element['id'] }}">{{ element['tipo'] }}</option>
+                {% endfor %}
+            </select>
+            <div>
+                <span></span>
+            </div>
+            <button id="boton" type="submit" class="btn btn-danger" style="background-color: darksalmon; border:0;">Registrar</button>
+        </form>
+    </div>
+    <div class="login">
+        <form action="/login/process" method="post" class="p-1 col-6 mx-auto my-5 bg-dark text-light float-end" style="color: darksalmon;">
+            <div class="titulo" style="color: darksalmon;"><h1>Ingresar</h1></div>
+            <div class="row-sm-10 mb-2">
+                <label for="nombre_usuario" style="color: darksalmon;">Usuario:</label>
+                <input name="nombre_usuario" type="text" class="form-control">
+            </div>
+            <div class="row-sm-10 mb-2">
+                <label for="password" style="color: darksalmon;">Password:</label>
+                <input name="password" type="password" class="form-control">
+            </div>
+            <button id="boton" type="submit" class="btn btn-danger" style="background-color: darksalmon; border:0;">Ingresar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

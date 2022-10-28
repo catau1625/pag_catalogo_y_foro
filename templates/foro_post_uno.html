@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        {% if super_user == 1: %}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle navbar-brand" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"  style="color: darksalmon;"><em>UtopikESSenses</em></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                    <li><a class="dropdown-item" href="/admin" style="color: darksalmon;">Inicio Admin</a></li>
+                    <li><a class="dropdown-item" href="/" style="color: darksalmon;">Inicio Usuario</a></li>
+                </ul>
+            </div>
+        {% else: %}
+            <a class="navbar-brand" href="/" style="color: darksalmon;"><em>UtopikESSenses</em></a>
+        {% endif %}
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+            <button class="btn btn-outline-darksalmon" style="color: darksalmon;" type="submit">Buscar</button>
+        </form>
+        <a href="/carrito" style="color: darksalmon;"><i class="bi bi-cart"></i></a>
+        {% if datos == 1: %}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: darksalmon;">
+                Welcome!
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                    <li><a class="dropdown-item" href="/perfil" style="color: darksalmon;">Perfil</a></li>
+                    <li><a class="dropdown-item" href="/miscompras" style="color: darksalmon;">Mis compras</a></li>
+                    <li><a class="dropdown-item" href="/logout" style="color: darksalmon;">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        {% else: %}
+            <a style="color: darksalmon;" href="/login">Ingresar   <i class="bi bi-person-circle"></i></a>
+        {% endif %}
+    </div>
+</nav>
+<div style="border: 2px black solid; background-color:darksalmon;">
+    <h1 style="color: black;">Nombre Post</h1>
+    <h4>Materiales</h4>
+    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad pariatur saepe, minus magni sed omnis suscipit fugiat laborum quaerat excepturi placeat repellat esse! At ratione nisi eum dolor? Corporis voluptas, saepe, necessitatibus maxime ducimus in voluptatum totam culpa quis laborum commodi aliquid quisquam architecto, ex atque incidunt consequuntur quia odio ipsa dignissimos explicabo. Necessitatibus deserunt laborum repellat amet incidunt dolorem tenetur. Totam error minima, accusamus odio aliquam sunt aliquid omnis cumque eveniet illo repellendus distinctio deserunt pariatur est quo obcaecati quos voluptas inventore assumenda officiis porro. Reiciendis earum libero, debitis quod harum quidem est ab quisquam excepturi laboriosam reprehenderit ad. Perspiciatis quae nobis sapiente, repudiandae totam necessitatibus nulla accusamus excepturi, corporis commodi, placeat quis harum. Rem debitis earum enim autem, expedita aliquid nobis perferendis ut ab asperiores ex atque sunt. Inventore quis laborum odio eos tenetur quod rem voluptas, vitae ullam tempore ex dolor delectus. Ipsum error quos sint dolorum fugiat aperiam mollitia iusto magnam optio cumque eos ad labore deserunt quaerat, alias dolore dolores quae autem ratione numquam. Expedita, nulla. Accusamus exercitationem officia id dolorum aut minus nulla repellat similique eveniet impedit fugit rerum temporibus eos eius incidunt unde, nam quibusdam maiores beatae distinctio magni perferendis! Blanditiis aliquid porro animi molestias sint beatae voluptatibus aspernatur velit corrupti odit? Explicabo perferendis quos velit nobis, possimus quis repellendus, quam corrupti quidem autem ad consectetur eligendi, natus labore amet laborum officia doloribus placeat ipsa delectus totam. Est praesentium itaque laudantium fugiat veniam facere delectus labore voluptatum tenetur, fugit animi nam sed eligendi, odit quasi qui modi eum voluptatem atque, facilis repellendus quaerat. Beatae cum ea eos commodi aperiam quo eius itaque rerum, magnam officia qui modi! Aliquid recusandae eos et doloribus dignissimos sed quasi fuga dolores accusantium dicta veritatis rem, necessitatibus neque deserunt laboriosam consequatur vero eum illum excepturi perspiciatis nihil ut explicabo atque! Amet suscipit aut quae impedit quisquam incidunt voluptate numquam repellat, recusandae obcaecati, odit, consequatur ullam consectetur doloribus fugiat iusto porro illum natus. Nihil, ratione labore quis ipsa placeat impedit soluta qui dolorem praesentium libero illo ex culpa laboriosam facere at commodi, obcaecati expedita odio earum sit itaque quidem nostrum. Ducimus voluptates quis expedita, quos doloremque facilis itaque tenetur cum reiciendis quia qui dolore harum vel laudantium illum nostrum neque earum unde magni, non voluptas! Neque labore debitis nobis optio provident. Error quia itaque a! Neque earum nostrum ducimus magnam ratione molestias natus, aspernatur distinctio atque expedita. Nisi dicta quam placeat nesciunt, aut temporibus vel officia mollitia perspiciatis accusantium! Voluptatum nesciunt tempore, aperiam accusantium iure veritatis optio! Vitae culpa nesciunt molestias recusandae autem incidunt beatae facere ab quibusdam, soluta doloremque minima earum fuga totam sit veritatis illo quasi consequuntur tempora eius similique at voluptas magni? Modi maiores dolores autem voluptate, culpa omnis laudantium distinctio, repellat, quibusdam cum expedita. Magni omnis architecto labore, sit iusto temporibus amet, laboriosam recusandae quaerat quam incidunt quia perferendis excepturi. Exercitationem eos quia deserunt ab labore deleniti rem placeat dolorem est autem, non expedita totam numquam impedit. Inventore vel, voluptatem ab unde beatae placeat molestias.</h3>
+</div>
+{% endblock %}

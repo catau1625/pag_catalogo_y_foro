@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        {% if super_user == 1: %}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle navbar-brand" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"  style="color: darksalmon;"><em>UtopikESSenses</em></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                    <li><a class="dropdown-item" href="/admin" style="color: darksalmon;">Inicio Admin</a></li>
+                    <li><a class="dropdown-item" href="/" style="color: darksalmon;">Inicio Usuario</a></li>
+                </ul>
+            </div>
+        {% else: %}
+            <a class="navbar-brand" href="/" style="color: darksalmon;"><em>UtopikESSenses</em></a>
+        {% endif %}
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+            <button class="btn btn-outline-darksalmon" style="color: darksalmon;" type="submit">Buscar</button>
+        </form>
+        <a href="/carrito" style="color: darksalmon;"><i class="bi bi-cart"></i></a>
+        {% if datos == 1: %}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: darksalmon;">
+                Welcome!
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: black;">
+                    <li><a class="dropdown-item" href="/perfil" style="color: darksalmon;">Perfil</a></li>
+                    <li><a class="dropdown-item" href="/miscompras" style="color: darksalmon;">Mis compras</a></li>
+                    <li><a class="dropdown-item" href="/logout" style="color: darksalmon;">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        {% else: %}
+            <a style="color: darksalmon;" href="/login">Ingresar   <i class="bi bi-person-circle"></i></a>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="modificar_suscripcion">
+    <form action="/modificar/suscripcion/process" method="post" class="p-1 col-6 mx-auto my-5 bg-dark text-light">
+        <input type="hidden" value="{{ suscripcion['id'] }}" name="id">
+        <div class="row-sm-10 mb-2">
+            <label for="new_tipo" style="color: darksalmon;">Tipo:</label>
+            <input name="new_tipo" type="text" class="form-control" placeholder="{{ suscripcion['tipo'] }}" value="{{ suscripcion['tipo'] }}">
+        </div>
+        <div class="row-sm-10 mb-2">
+            <label for="new_precio" style="color: darksalmon;">Precio:</label>
+            <input name="new_precio" type="number" class="form-control" placeholder="{{ suscripcion['precio'] }}" value="{{ suscripcion['precio'] }}">
+        </div>
+        <a href="/eliminar/suscripcion/{{ suscripcion['id'] }}" class="btn btn-danger" type="button" style="background-color: darksalmon; border:0;">Eliminar Suscripción</a>
+        <button id="boton" type="submit" class="btn btn-danger" style="background-color: darksalmon; border:0;">Enviar</button>
+    </form>
+</div>
+{% endblock %}
